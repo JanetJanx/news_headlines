@@ -29,15 +29,15 @@ def cli():
     news_request = requests.get(url)
     main_dict = news_request.json()
     article_list = main_dict['articles']
-
+    count = 0
     for article in article_list:
-        type(article) == int
+        count = count + 1
         click.echo(click.style('TITLE: ' + article['title'], fg='green'))
         click.echo('\n')
         click.echo(click.style('description: ' + str(article['description']), fg='yellow'))
         click.echo('\n')
         click.echo(click.style('BY: ' + article['url'], fg='blue'))
-        click.echo(click.style('..................................................', fg='green'))
+        click.echo(click.style('......................'+ str(count) +'............................', fg='green'))
         click.echo('\n')
         #click.echo('o', 'red')
 
