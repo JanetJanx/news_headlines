@@ -9,6 +9,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        hello=news:cli,
+        hello=news_board:cli,
     ''',
 )
