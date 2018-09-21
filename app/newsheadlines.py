@@ -7,14 +7,16 @@ class NewsHeadlines:
     def news_source_menu(self):
         menu = ('Select your favorate source of News'+ '\n' + '1. FOX-News' + '\n' + '2. CNN' + '\n' + 
             '3. Al- Jazeera - english'+ '\n' + '4. BBC-Sport'+ '\n' + '-' * 100)
-        return click.echo(click.style(menu, fg='blue'))
+        click.echo(click.style(menu, fg='blue'))
+        return menu
         
 
     def news_board(self):
         board = ('\n'+ '*' * 100 + '*' + ' ' * 98 +' ' * 98 + '\n' +' ' * 30 + 
                 'News HeadLines ' + ' ' * 32 + '*' + '*' + '\n'+' ' * 12 + 'The latest and Live breaking news headlines ' 
                 + ' ' * 26 + '*' + '*' + ' ' * 98 + '*' + '*' + ' ' * 98 + '\n'+'*' + '*' * 100 + '\n')
-        return click.echo(click.style(board, fg='blue'))
+        click.echo(click.style(board, fg='blue'))
+        return board
     
     def get_key(self):
         if 'API_KEY' not in os.environ:

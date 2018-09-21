@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch 
 import requests
 import os.path
 import sys
@@ -13,6 +14,18 @@ class TestNews(unittest.TestCase):
 
     def test_api_key_collection(self):
         self.assertEqual(self.news.get_key(), '9b40cf73093e47e586cd61132f1d56fe')
+    
+    def test_display_news_source_menu(self):
+        test_menu = ('Select your favorate source of News'+ '\n' + '1. FOX-News' + '\n' + '2. CNN' + '\n' + 
+            '3. Al- Jazeera - english'+ '\n' + '4. BBC-Sport'+ '\n' + '-' * 100)
+        self.assertEqual(self.news.news_source_menu(), test_menu)
+
+    def test_news_board(self):
+        board = ('\n'+ '*' * 100 + '*' + ' ' * 98 +' ' * 98 + '\n' +' ' * 30 + 
+                'News HeadLines ' + ' ' * 32 + '*' + '*' + '\n'+' ' * 12 + 'The latest and Live breaking news headlines ' 
+                + ' ' * 26 + '*' + '*' + ' ' * 98 + '*' + '*' + ' ' * 98 + '\n'+'*' + '*' * 100 + '\n')
+        self.assertEqual(self.news.news_board(), board)
+
 
     def test_cli_function(self):
         api_key = self.news.get_key()
