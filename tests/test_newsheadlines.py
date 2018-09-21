@@ -13,7 +13,7 @@ class TestNews(unittest.TestCase):
         self.display = NewsDisplay()
 
     def test_api_key_collection(self):
-        self.assertEqual(self.news.get_key(), '9b40cf73093e47e586cd61132f1d56fe')
+        self.assertEqual(self.news.get_key(), os.environ.get('API_KEY'))
     
     def test_display_news_source_menu(self):
         test_menu = ('Select your favorate source of News'+ '\n' + '1. FOX-News' + '\n' + '2. CNN' + '\n' + 
