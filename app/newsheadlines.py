@@ -1,6 +1,7 @@
 import click
-import requests
 import os
+import click
+import requests
 
 class NewsHeadlines:
     def news_source_menu(self):
@@ -16,14 +17,15 @@ class NewsHeadlines:
         return click.echo(click.style(board, fg='blue'))
     
     def get_key(self):
-        os.environ.get('API_KEY')
         if 'API_KEY' not in os.environ:
             raise ValueError("Your Key is invalid! Access Denied")
         return os.environ.get('API_KEY')
-    
+
+
+class NewsDisplay:
     def cli(self, source_number):
         sources = {'1':'fox-news', '2':'cnn','3':'al-jazeera-english','4':'bbc-sport'}
-        api_key = self.get_key()
+        api_key = NewsHeadlines().get_key()
         for news_source in sources:
 
             if news_source == source_number :
@@ -41,11 +43,12 @@ class NewsHeadlines:
                     headlines = "..... {} .....\n Title: {}\n Description: {} \n Link: {}\n".format(count, title, description, article_url)
                     click.echo(click.style(headlines, fg='green'))
                 return headlines
-   
+
 
 if __name__ == "__main__":
     display = NewsHeadlines()
     display.news_board()
     display.news_source_menu()
     source_number = input('> Enter the number of your Favorate Source of News here: ')
-    display.cli(source_number)
+    news_display = NewsDisplay()
+    news_display.cli(source_number)
